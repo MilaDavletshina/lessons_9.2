@@ -45,4 +45,9 @@
 4. git commit -m 'filter for russian letters'
 5 пишем функцию save_to_file
 6. появляется отдельный txt файл в папке data
-
+7. git add .
+8. git commit -m 'save data in file'
+9. создаем функцию filter_english_names
+10. дублируем последние пять строчек
+11. git add .
+12. git commit -m 'filter for english letters'
