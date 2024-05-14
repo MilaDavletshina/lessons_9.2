@@ -20,6 +20,7 @@ def is_cyrillic(name_item: str) -> bool:
     """проверка на вхождение кириллицы в строку"""
     return bool(re.search('[а-яА-Я]', name_item))  #импортируем из библиотеки регулярных выражений. в [] задаем паттерн
 
+
 def filter_russian_names(names_list: list) -> list:
     """Фильтрация имен написанных на русском"""
     new_names_list = list()
@@ -28,9 +29,20 @@ def filter_russian_names(names_list: list) -> list:
             new_names_list.append(name_item)
 
     return new_names_list
+
+def save_to_file(file_name: str, data: str) -> None:
+    """Сохраняет данные в файл"""
+    with open('data/' + file_name, 'w') as names_file:   #'w'- на запись
+        names_file.write(data)
+
 if __name__ == '__main__':
     cleared_name = clear_names('names.txt')   #принимаем из файла
     #
     # for i in cleared_name:   #проходимся по списку
     #     print(i)
-    print(filter_russian_names(cleared_name))
+    #print(filter_russian_names(cleared_name)) #выводит только русские имена
+    filtered_names = filter_russian_names(cleared_name)
+    save_to_file(
+        'russian_names.txt',       # есть файл
+        '\n'.join(filtered_names)   #список сделали join через , и пробел
+    )

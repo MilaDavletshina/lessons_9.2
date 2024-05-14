@@ -39,7 +39,10 @@
 После завершения разработки сделайте отмену коммита, в котором был урезан исходный файл,
 т. е. верните полный TXT-файл.
 
-1. пишем функцию в файле main.py filter_russian_names
+1. пишем функцию в файле main.py filter_russian_names и is_cyrillic
 2. чтобы проверить только русские имена напишем отдельную функцию
 3. git add .
-4. git commit -m 'update names file'
+4. git commit -m 'filter for russian letters'
+5 пишем функцию save_to_file
+6. появляется отдельный txt файл в папке data
+
