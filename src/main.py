@@ -1,3 +1,6 @@
+import re  #импорт из библиотеки регулярных выражений
+
+
 def clear_names(file_name: str) -> list:   #принимаем строки, возвращаем список имен
     """функция очистки имен от лишних символов"""
     new_names_list = list()   #задаем новую переменную
@@ -13,8 +16,21 @@ def clear_names(file_name: str) -> list:   #принимаем строки, в�
     return new_names_list
 
 
+def is_cyrillic(name_item: str) -> bool:
+    """проверка на вхождение кириллицы в строку"""
+    return bool(re.search('[а-яА-Я]', name_item))  #импортируем из библиотеки регулярных выражений. в [] задаем паттерн
+
+def filter_russian_names(names_list: list) -> list:
+    """Фильтрация имен написанных на русском"""
+    new_names_list = list()
+    for name_item in names_list:
+        if is_cyrillic(name_item):
+            new_names_list.append(name_item)
+
+    return new_names_list
 if __name__ == '__main__':
     cleared_name = clear_names('names.txt')   #принимаем из файла
-
-    for i in cleared_name:   #проходимся по списку
-        print(i)
+    #
+    # for i in cleared_name:   #проходимся по списку
+    #     print(i)
+    print(filter_russian_names(cleared_name))
